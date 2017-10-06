@@ -1,0 +1,278 @@
+\documentclass[10pt, twocolumn]{article}
+
+% Packages
+% ----------------------------------------------------------------------------------------------------------------
+\usepackage[paper=a4paper,left=25mm,right=20mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{subfig}
+\usepackage{wrapfig}															% wrap figures/tables in text
+\usepackage{multicol}
+\usepackage{mathptmx} 															% FontStyle: Times New Roman
+\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage{titlesec} 
+\usepackage{titling} 															% To modify title
+\usepackage{abstract}
+\usepackage{indentfirst}														% add indent after section heading
+\usepackage[hang,flushmargin]{footmisc}											% no indent in footnote
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+
+% Packages that can be removed before final version
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{layouts}
+\usepackage{dblfloatfix}
+
+% Formatting
+% ----------------------------------------------------------------------------------------------------------------
+\setlength{\textwidth}{16.5cm}	% text width
+\setlength{\columnsep}{5mm}  	% column seperation
+\setlength\parindent{0.6cm}     % indent length after section  
+
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{}{} 	% section header is normal font size, bold
+\titlespacing*{\section}{0pt}{\baselineskip}{0pt}				% remove extra space around section heading
+
+\posttitle{\par\end{center}}									% no extra space after title
+\setlength{\droptitle}{-1.4cm}									% move title up
+
+\renewcommand\footnoterule{\kern -3pt \hrule width 5cm \kern 5pt}	% footnote line is 5cm long
+
+
+% Begin document
+% ----------------------------------------------------------------------------------------------------------------
+\begin{document}
+\date{}	% no date on page
+
+% Define Title
+\title{\textbf{\large Experimental Investigations of Mixing Characteristics in Model Rotating Detonation Engine Geometries}}
+
+% Define authors
+\author{
+\fontsize{11pt}{11pt}\selectfont Richard Bluemner\textsuperscript{1} \hspace{-1ex} \thanks{Corresponding author: richard.bluemner@tu-berlin.de \newline Proceedings of the European Combustion Meeting 2017} \thanksgap{0.5ex},
+\fontsize{11pt}{11pt}\selectfont Myles D. Bohon\textsuperscript{1},
+\fontsize{11pt}{11pt}\selectfont Ephraim J. Gutmark\textsuperscript{2},
+\fontsize{11pt}{11pt}\selectfont Christian Oliver Paschereit\textsuperscript{1}\\ 
+\fontsize{10pt}{10pt}\selectfont \vspace{-2pt}\textsuperscript{1} Technische Universität Berlin, Chair of Fluid Dynamics, Berlin, 10623, Germany\\ 
+\fontsize{10pt}{10pt}\selectfont \vspace{-2pt}\textsuperscript{2} University of Cincinnati, Department of Aerospace Engineering, Cincinnati, OH 45220, USA\\
+}
+
+
+% Title and Abstract text should be in one column
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle	% Print title
+
+\vspace{-1.2cm}
+\section*{Abstract}
+This work examines the mechanisms of reactant mixing in a model Rotating Detonation Engine (RDE) geometry. RDEs are emerging as one of the highest potential applications for achieving Pressure Gain Combustion (PGC). Reactant mixing has been identified as a crucial component of efficient RDE operation. Therefore, a scaled model of a typical RDE engine geometry was examined in a water tunnel using Planar Laser Induced Fluorescence (PLIF) to observe the influence of fuel injection position, confinement geometry, and blowing ratio on the mixing characteristics and quality of mixing.
+
+\vspace{\baselineskip}
+\end{@twocolumnfalse}
+]
+
+\saythanks % show footnotes
+\thispagestyle{empty} % no pagenumber on first page
+
+
+\section*{Introduction}
+In traditional combustion processes, such as those used in both ground-based and aircraft gas turbine engines, heat release occurs at constant pressure (or even with a slight pressure loss). After decades of research, the efficiency of such engines is approaching the limit of the thermodynamic cycle efficiency and further performance gains are increasingly difficult to achieve. Significant potential for performance improvements is by forcing the combustion to occur under constant volume conditions, resulting in what has become known as Pressure Gain Combustion (PGC). One method to achieve such constant volume conditions is to utilize a detonation cycle in which heat is released in an unsteady detonation wave, rather than through a deflagration wave as in traditional engines.
+
+Previously, this mode of operation has been investigated in Pulsed Detonation Engines (PDE) and Rotating Detonation Engines (RDE). While PDE research has received significant attention in the past, difficulties due to the low operating frequency, long refill times, and the size and complexity of valving and deflagration-to-detonation (DDT) devices has shifted focus toward RDEs ~\cite{Schwer1999}. RDEs operate through the continuous injection of fuel and air into an annular (or otherwise closed-loop) combustion chamber. On startup, a detonation wave is initiated propagating around the circumference of the combustion annulus. After the passage of the detonation wave, fresh reactants begin refilling the chamber before the detonation waves completes a lap of the annulus allowing the wave to continually propagate into fresh reactants. Due to the high velocity of detonation waves, the operating frequency of RDEs is on the order of kHz (more than an order of magnitude higher than PDEs). While this high operating frequency has the added benefit of reducing the amplitude of pressure fluctuations at the exit of the combustion chamber and allowing for easier integration with existing turbine technology~\cite{Naples2014}, the short period between detonation waves limits the time available for reactants to mix~\cite{Driscoll2016a}. As a consequence, mixing becomes a crucial step in efficient RDE operation~\cite{Nordeen2015,Driscoll2016a}.
+
+The objective of this work is to investigate the mixing of fuel and air in a generic model RDE geometry originally based on a design by Shank~\cite{Shank2012}. Versions of this geometry have been studied fairly extensively~\cite{Naples2013,Paxson2015,George2015,Driscoll2015,Anand2016b,Pandiya2016}. Due to the small physical dimensions in typical RDEs and limited diagnostic access to the regions in which mixing occurs, it was decided to investigate the mixing in a scaled section of an RDE. The model was then installed in a water tunnel for Planar Laser Induced Fluorescence (PLIF) measurements of dye mixing in the region near the base of the combustion annulus. The influence of the dyed fuel injection hole position, the geometry of the engine corner, and the blowing ratio was investigated with the objective of understanding the mechanisms controlling and limiting the mixing, ultimately with the objective of improving fuel and air injection in RDEs.
+
+\section*{Specific Objectives} 
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[b!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/water_tunnel_draw_2d_large.pdf}
+	\caption{Experimental setup, illustrating the flow path through the model (left) and a diagram of the water tunnel system (right).}
+	\label{fig:exp_setup}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+The geometry of the model RDE injection scheme can be described as a confined jet in crossflow with a 90$^{\circ}$ turn. As shown in Fig.~\ref{fig:exp_setup}, the model is installed in a 40~cm square cross sectional, vertically oriented water tunnel. The primary water flow enters through the base of the model and flows over the fuel plate with an injection hole through which a secondary flow of water and Rhodamine 6G dye is injected. The primary and secondary flows mix at the base of the model and exit through the top. The tunnel can be operated in both open and closed loop configurations, with the open configuration used in this work to avoid contamination of the water supply with dye. The secondary dye and water mixture used a premixed concentration of Rhodamine 6G in the reservoir at concentrations of approximately $3\times10^{-7}$~$\textrm{mol}/\textrm{L}$, which can be injected either through the fuel injection hole or upstream into the primary flow for a fully premixed condition.
+
+A continuous wave laser at 532~nm and approximately 1.2~W illuminates the longitudinal plane of the jet in a vertically oriented sheet. The dye fluorescence is imaged at 2~kHz with an exposure time of 8000~$\textrm{s}^{-1}$ through a 532~nm interference filter to eliminate laser scatter. The linearity of fluorescent response as a function of the dye concentration as well as the laser energy was confirmed. Corrections for the variation in the laser energy through the laser sheet were applied to each frame. Variations in the dye concentration were corrected by matching fluorescence signals in the undiluted potential core of each jet.
+
+The dimensions of the model were scaled in order to preserve characteristics of the target flow in the RDE. As such, the Reynolds numbers of both the primary and secondary flows were held constant:
+\begin{align}
+\frac{\rho_au_ag_a}{\mu_a}&=\frac{\rho_wu_pG}{\mu_w} \label{eqn:1}\\
+\frac{\rho_fu_fd_f}{\mu_f}&=\frac{\rho_wu_sD}{\mu_w} \label{eqn:2}
+\end{align}
+where the subscripts $a$ and $f$ refer to air and fuel properties in the RDE, respectively, with scaling for this study based on hydrogen as the fuel. The subscripts $p$ and $s$ refer to the primary (cross) and secondary (jet) flows, respectively. The characteristic lengths $g_a$ and $G$ are the gap width between the fuel plate and the primary flow confinement in the RDE and the model, respectively, while the characteristics lengths $d_f$ and $D$ describe the diameter of the fuel and dye injection holes, respectively. In the RDE, the velocities of both the air and fuel streams are at choked conditions while in the model they remain unchoked. The model is further scaled to preserve the momentum flux ratio of the RDE at stoichiometric conditions, where the momentum flux ratio can be described as:
+\begin{equation}
+\frac{\rho_fu_f^2}{\rho_au_a^2}=\frac{\rho_wu_s^2}{\rho_wu_p^2}
+\label{eqn:3}
+\end{equation}
+In the case where the density of the two streams is the same, the momentum ratio reduces to the blowing ratio (BR) defined as:
+\begin{equation}
+BR=\sqrt{\frac{u_s^2}{u_p^2}}=\frac{u_s}{u_p}
+\label{eqn:4}
+\end{equation}
+Finally, the blockage ratio of the RDE is preserved in the model, where the blockage ratio is defined as:
+\begin{equation}
+\frac{\ell_f}{d_f}=\frac{W}{D}
+\label{eqn:5}
+\end{equation}
+where $\ell_f$ is the separation between fuel jets in the RDE and W is the width of the model test section. The blockage ratio describes the diameter of the fuel jet relative to separation between jets and indicates how much the cross flow is obstructed by the jets.
+
+This work investigates the influence of three parameters on the nature and quality of mixing throughout the test section. The first parameter is the location of the injection hole where two configurations were investigated. The standard configuration positions the seconday (jet) injection tangential to the outer wall as shown in Fig.~\ref{fig:exp_setup}, while the advanced configuration locates the secondary injection within the primary channel such that the jet at the BR design point intersects the corner of the outer wall. The second parameter is the shape of this outer wall corner. In the RDE, this corner has a sharp edge, however due to the high velocity flow turning this corner, it is expected that the shape of this corner will significantly influence the mixing. Therefore, both a sharp and rounded corner (with a radius of 15~mm) were investigated. Lastly, a range of BRs was investigated between 0.44 and 4.3, with a BR of 1.26 design point used to scale the model. The BR was varied by adjusting the secondary flow rate while holding the primary flow constant. Table~\ref{tab:exp} details several of the relevant dimensions and characteristics of the flow after scaling the model.
+
+% ------------------- begin table ------------------------------------------------------------------------------
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\begin{table}[t]
+	\begin{tabular}{L{0.5\columnwidth} R{0.4\columnwidth}}
+		
+		\toprule
+		
+		Property						&(units)	\\		
+		\hline
+		\hline
+		$D$								&8 mm		\\
+		$G$								&36.3 mm	\\
+		BR (Design Point)				&1.26		\\
+		$u_p$							&0.629 m/s	\\
+		$u_s$							&0.791 m/s	\\
+		$Re_p$							&22800		\\
+		$Re_s$							&6300		\\
+
+		
+		\bottomrule
+	\end{tabular}
+	\caption{Revelant experimental geometry and flow values of the scaled model.}
+	\label{tab:exp}
+\end{table}
+% ------------------- end table --------------------------------------------------------------------------------
+
+
+\section*{Results and Discussion} 
+For each test condition, 4366 frames (2.18~s) were averaged to provide the mean scalar field. Figure~\ref{fig:mean_field} shows a selected subset of the BR examined to illustrate the change in jet shape. It can be seen in Fig.~\ref{fig:mean_field}a that the jet does not penetrate very far into the mixing region, but rather remains closely attached to the base of the fuel plate. Increasing BR to 1.3 (b) begins to lift the jet off the base. By a BR of 2.8 (c) the jet is no longer attached to the base and begins to approach the outer wall corner. Finally, at the highest BR examined of 4.3 (d), the jet begins to impinge on the corner. The flow field can be characterized by two major features: a recirculation zone at the corner between the inner wall and the base (Region I) and a region of separation and recirculation in the lee of the outer wall as the primary flow rounds the corner (Region II). At low BR such as in (a) and (b) the flow interacts more closely with the recirculation zone in the corner between the inner wall and the floor (I) due to limited jet penetration beyond the primary flow boundary layer. As BR increases, as in (c) and (d), the jet penetrates through the boundary layer and either follows the bulk flow (c) or impinges on the outer wall corner recirculation (II) and is entrained closer to the outer wall (d).
+
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[t!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/Mean_LIF_LSN_rev}
+	\caption{Mean scalar fields for various BR in the standard hole position and corner shape case.}
+	\label{fig:mean_field}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[b!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/Jet_Trajectories}
+	\caption{Trajectories of maximum scalar for a sharp corner with (a) standard and (b) advanced hole positions, and for a rounded corner with (c) standard and (d) advanced hole positions. Darker markers indicate increasing BR.}
+	\label{fig:traj}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+The trajectory of the maximum scalar can be extracted from each mean image and the influence of the injection geometry can be examined, as shown in Fig.~\ref{fig:traj}. In Fig.~\ref{fig:traj}a, the trajectories from Fig.~\ref{fig:mean_field} are plotted along with the remaining BRs. As was observed above, increasing the BR results in a shift in the trajectory of the jet from being pulled toward the lower recirculation zone to greater entrainment in the recirculation zone behind the outer corner. By advancing the hole position (b), even the lowest BR cases are allowed enough time to penetrate through the boundary layer such that the dominate feature for controlling the jet trajectory becomes the corner recirculation and most of the jets follow similar trajectories. In the cases with high BR in Fig.~\ref{fig:traj}b, the jets begin to impinge on the underside of the primary flow confinement resulting in the jets spreading out of the measurement plane. In the highest BR cases, the jets entrain strongly into the corner recirculation (II) through the interaction of the spread jet and the turning of the bulk flow around the corner.
+
+If the shape of the corner is rounded, as shown in Fig.~\ref{fig:traj}c, the low BR cases behave similarly to the sharp corner cases. However, from observations of the time series, a periodic reattachment of the bulk flow to the corner surface as the bulk flow rounds the corner can be observed. The effect of this fluctuating attachment can be observed in the moderate and higher blowing ratio cases in (c) by the spreading of the trajectories in the far-field. Additionally, in (d) the maximum scalar can be seen to be much closer to the outer wall or attached to the corner for the higher blowing ratio cases. Additional work is ongoing to examine varying degrees of boundary layer separation at the corner.
+
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[t!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/Sequence_vertical}
+	\caption{Close up view of shedding events in BR=2.3 cases with sharp (a-d) and rounded (e-h) corners.}
+	\label{fig:seq}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+The influence of this unsteady separation of the primary flow as it rounds the corner can be observed in the sequence of images in Fig.~\ref{fig:seq}. This fluctuation off the corner is strongly coupled to the primary flow, which remains constant throughout the experiments. In the sequence (a-d), a vortex which has shed from the sharp corner encounters the windward side of the jet and a packet of jet fluid is entrained in the recirculation zone behind the corner. In the sequence (e-h) with a rounded corner, a periodic separation and reattachment to the corner surface can be observed. Both of these mechanisms appear to broaden the jet and entrain fluid into Region II.
+
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[t!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/Jet_spread_vertical}
+	\caption{Jet spread as defined by the percentage of the maximum scalar perpendicular to the jet trajectory.}
+	\label{fig:spread}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+The influence of these mixing effects can be seen in the spreading of the jet as shown in Fig.~\ref{fig:spread}. At each point along the jet trajectory, the jet spread is determined by examining the profile perpendicular to the local trajectory and observing the scalar decay relative to the maximum scalar on the jet. These points are then plotted and the influence of the different recirculation regions can be seen through the stretching of the jet. In Fig.~\ref{fig:spread}a, it can be seen that the greatest jet spread is due to the recirculation in region I on the downwind side of the jet. Due to the limited penetration, the vortex shedding from the corner does not impact the jet until much farther along the jet trajectory. Figure~\ref{fig:spread}b shows a moderate BR with jet spread due to both regions I and II. Additionally, the point at which the jet intersects the shed vortices is moved closer to the corner. Increasing the BR to 3.8 as in (c) shows jet interacting with the shed vortices even sooner. The rounded corner in (d-f) still shows similar trends with respect to the jet spread, however due to the lower frequency, larger scale attachment/separation observed in Fig.~\ref{fig:seq} the trajectories are noisier and slightly broader.
+
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[b!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/Phi_Levels_Sharp_vertical}
+	\caption{Normalized Fuel Air Ratios (NFAR) for standard (a-d) and advanced (e-h) hole positions.}
+	\label{fig:NFAR_sharp}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+The quality of the mixing can be observed by normalizing the scalar field by the fully premixed value, yielding the Normalized Fuel Air Ratio (NFAR) shown in Figs.~\ref{fig:NFAR_sharp} and \ref{fig:NFAR_round}. If the jet can be considered a proxy for the injection of fuel, then the shaded regions in these figures indicate areas in excess of the globally specified Fuel Air Ratio (FAR). Each contour level in the figures corresponds to values greater than 1, 3, and 6 times of the fully premixed FAR.
+
+In the sharp corner configuration shown in Fig.~\ref{fig:NFAR_sharp}(a-d), it can be seen that increasing the BR for the standard hole position results in an increasingly well defined jet. As was observed in Figs.~\ref{fig:mean_field} and \ref{fig:traj}, jets with low BR have difficulty penetrating the broundary layer and are more strongly attached to the base. In this region behind the jet, mixing is characterized by the formation of wake vortices which entrain fluid from behind the jet~\cite{Fric1994}. This results in the majority of the mixing occuring in this vertical region behind the jet, and thus the large NFAR 6x region behind the jet. This results in distinct regions of jet fluid mixing bordered by regions of little jet fluid around the circumference of an engine. Such stratified mixtures are unlikely to be suitable to stable RDE operation. As the BR increases, less mixing occurs in this region behind the jet. In an unconfined jet in cross-flow, overall mixing is enhanced through the formation of a counter-rotating vortex pair (CVP) downstream of the jet, especially as the blowing ratio increases and the jet penetrates through the boundary layer~\cite{Kamotani1972,Fric1994,Megerian2007}. This CVP is characterized by the lateral movement of jet fluid out of the longitudinal plane and entrainment of the cross-flowing fluid~\cite{Salewski2008}. Additionally, the strengthening of this jet structure shifts a greater burden for the scalar mixing onto the CVP, which may ultimately reduce the mixing efficiency in this configuration. It should also be noted, however, that increasing the size of the CVP increases out-of-plane movement, and in configurations with multiple fuel injection holes (especially with small jet separation distances), neighboring jets may begin to strongly interact. This feature is the focus of on-going work and whether additional parameters may influence if mixing is enhanced or reduced. 
+
+In the low BR case (a), the interaction of the vortex shedding with the jet is responsible for entraining packets of jet fluid into the recirculation zone behind the corner (evidenced by the broad NFAR 3x region extending into the recirculation zone). As the BR increases, the jet simultaneously strengthens as a characteristic flow feature while impinging more directly on the separation. As a consequence, three-dimensional effects such as the flow around the jet and out of plane structures become increasingly important but are difficult to capture in this plane.
+
+As the hole position is advanced as shown in Fig.~\ref{fig:NFAR_sharp}e-h, the impact of the proximity of the opposing wall becomes more pronounced. For low BR (e), the jet behaves similiarly to the standard hole position, however the boundary layer on the opposing wall reduces the cross flow velocity and allows the jet to effectively penetrate further. Consequently, the jet fluid is able to entrain into the separation zone as seen by the large NFAR 3x region in (e). Increasing the BR however results in impingement of the jet onto the opposing wall which serves to spread the jet over the surface of the crossflow confinement and to destroy prominent jet in cross flow features such as the CVP. Rather, the mixing appears to be dominated by the presence of the fluid spread across a longer section of the sharp corner and mixing through the fluctuation of the primary flow around the corner. However, as can be seen in (h), increasing the BR further greatly spreads the jet, results in the formation of a small separation region on the windward side of the jet and confinement interface, and ultimately reduces the amount of jet fluid mixed into the annulus. This can be observed by the growing white region extending up in the center of the annulus in (h).
+
+% ------------------- begin figure -----------------------------------------------------------------------------
+\begin{figure}[t!]
+	\centering
+	\includegraphics[width=\columnwidth,trim=0 0 0 0,clip]{./figures/Phi_Levels_Round_vertical}
+	\caption{Normalized Fuel Air Ratios (NFAR) for standard (a-d) and advanced (e-h) hole positions.}
+	\label{fig:NFAR_round}
+\end{figure}
+% ------------------- end figure -------------------------------------------------------------------------------
+
+As was mentioned previously, rounding the corner of the confinement section results in a periodic separation and reattachment of the primary flow to the corner surface. As shown in Fig.~\ref{fig:NFAR_round}a, at low BR this does not have a large impact on the mixing profiles since mixing is primarily influenced by the inner wall recirculation zone. At higher blowing ratios however, the fluctuating separation does appear to improve mixing as can be seen by the smaller NFAR 3x regions, possibly by periodically disrupting the jet as well as entraining large packets of jet fluid during the periods of reattachment. This fluctuating reattachment also appears to have increased the size (relative to the sharp corner case) of the white region of low NFAR that extends between the corner and the jet.
+
+The mixing in the advanced hole and rounded corner configuration (e-h) appears to be similar to the sharp corner case. In the lowest BR case the jet penetration appears comparable, however the rounded corner allows for slightly greater separation between the jet and the corner and the mixing profile exhibits features of the standard hole position such as the entrainment of packets of jet fluid into the recirculation zone. At higher BR, the mixing is still dominated by the impingement of the jet on the confining surface, however the fluctuating attachment of the bulk flow has resulted in a larger area with less jet fluid in the center of the annulus in this plane.
+
+\section*{Conclusions}
+This work presents PLIF measurements of the scalar mixing of a dye-containing jet issuing into a confined cross-flow in a confinement geometry typical of an RDE. The purpose was to investigate the influence of three parameters -- injection hole position, confinement geometry, and blowing ratio -- on the quality of mixing and the distribution of the jet fluid in the primary mixing region of the RDE annulus.
+
+It was observed that the injection hole position can either enhance or reduce mixing of the jet and cross-flow fluids. When the injection is in the standard position, the jet is able to establish flow structures typical of an unconfined jet in cross-flow. Typically the CVP region results in enhanced mixing rates, however the presence of a strong CVP may limit mixing rates to that of an unconfined jet and diminish the potential mixing enhancements of the confined flow. Advancing the jet into the confinement region limits the formation of the CVP. However the impingement of the jet on the confining wall spreads the jet across the confining surface and increases the importance of the separation region behind the outer wall corner to mixing.
+
+The confining geometry demonstrated interesting effects on the jet mixing. The vorticity induced by the flow separation was observed to be effective at entraining jet fluid in the outer wall recirculation zone. Additionally, rounding the edge of the corner resulted in a fluctuating separation and reattachment of the flow to the corner surface. The frequency of this separation could conceivably play an important role in coupling with the inherent unsteadiness of the jet, depending on the radius of curvature and primary flow velocity. These effects, however, need additional study to determine the net impact on quality of mixing.
+
+Ultimately, the blowing ratio was observed to determine which flow structures in the annulus dominated the jet and cross-flow fluid mixing. It was observed that under low BR, the boundary layer along the fuel plate confined the jet fluid into the regions behind the jet and increased the interaction between the jet and the recirculation zone in the corner between the inner wall and the fuel plate. Increasing the blowing ratio increased the similarity between the jet here and an unconfined-jet configuration, up until the point where the trajectory of the jet came within proximity of the either the outer wall corner or the confinement itself. In the cases of strong jet impingement, the jet behaved less as a jet-in-cross-flow and more as an impinging jet.
+
+Additional work is necessary to definitely state what the optimal fuel and air injection configuration is for RDE stability. However this work has served to increase the understanding of some of the dominant flow structures with regard to fluid mixing. 
+
+\section*{Nomenclature}
+\begin{flushleft}
+	\begin{tabular}{@{}ll}
+		$D$            	& fuel jet diameter in model\\
+		$d$				& fuel jet diameter in engine \\
+		$G$            	& cross-flow confinement gap width in model\\
+		$g$            	& cross-flow confinement gap width in engine \\
+		$u$				& velocity \\
+		$\rho$			& density \\
+		$\ell$			& injection hole separation distance in engine \\
+		\multicolumn{2}{@{}l}{\textbf{Subscripts}}\\
+		$p$				& primary, or cross-flow value in model\\
+		$s$				& secondary, or jet value in model \\
+		$a$				& air \\
+		$f$				& fuel \\
+		$w$				& water \\
+\end{tabular}
+\end{flushleft}
+
+\section*{Acknowledgments} 
+This work was funded by the Einstein Foundation Berlin. The authors would also like to thank Andy G{\"o}hrs for his contribution throughout this experimental campaign.
+
+% ----------------------------------------------------------------------------------------------------------------
+% Bibliography
+
+%\bibliographystyle{model1-num-names}
+\bibliographystyle{elsarticle-num-CNF}
+%\bibliography{F:/Mendeley_PC_Backup/library}
+\bibliography{2017_ECM}
+%\bibliography{all_lit_RDE}
+
+\end{document}
